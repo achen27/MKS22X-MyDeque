@@ -30,7 +30,12 @@ public class MyDeque<E>{
     return output;
   }
 
-  public void addFirst(E element){ }
+  public void addFirst(E element){
+    if (start == 0){
+      start = data.length-1;
+    }
+    data[start] = element;
+  }
 
   public void addLast(E element){ }
 
