@@ -13,13 +13,33 @@ public class MyDeque<E>{
     E[] d = (E[])new Object[initialCapacity];
     data = d;
   }
-  
-  public int size(){ }
-  public String toString(){ }
+
+  public int size(){
+    return size;
+  }
+
+  public String toString(){
+    String output = "{";
+    for (int i = start; i != end; i++){
+      if (i == data.length){
+        i = 0;
+      }
+      output += data[i]+" ";
+    }
+    output += "}";
+    return output;
+  }
+
   public void addFirst(E element){ }
+
   public void addLast(E element){ }
+
   public E removeFirst(){ }
+
   public E removeLast(){ }
+
   public E getFirst(){ }
+
   public E getLast(){ }
+
 }
