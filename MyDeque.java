@@ -45,7 +45,16 @@ public class MyDeque<E>{
     return output;
   }
 
-  public E removeLast(){ }
+  public E removeLast(){
+    E output = data[end];
+    data[end] = null;
+    if (end == 0){
+      end = data.length-1;
+    }else{
+      start--;
+    }
+    return output;
+  }
 
   public E getFirst(){
     return data[start];
