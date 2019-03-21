@@ -35,6 +35,7 @@ public class MyDeque<E>{
       start = data.length-1;
     }
     data[start] = element;
+    size++;
   }
 
   public void addLast(E element){
@@ -42,6 +43,7 @@ public class MyDeque<E>{
       end = 0;
     }
     data[end] = element;
+    size++;
   }
 
   public E removeFirst(){
@@ -52,6 +54,7 @@ public class MyDeque<E>{
     }else{
       start--;
     }
+    size--;
     return output;
   }
 
@@ -63,6 +66,7 @@ public class MyDeque<E>{
     }else{
       start--;
     }
+    size--;
     return output;
   }
 
