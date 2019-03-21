@@ -34,7 +34,16 @@ public class MyDeque<E>{
 
   public void addLast(E element){ }
 
-  public E removeFirst(){ }
+  public E removeFirst(){
+    E output = data[start];
+    data[start] = null;
+    if (start == data.length-1){
+      start = 0;
+    }else{
+      start--;
+    }
+    return output;
+  }
 
   public E removeLast(){ }
 
