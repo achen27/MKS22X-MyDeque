@@ -8,19 +8,25 @@ public class MyDeque<E>{
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[10];
     data = d;
+    size = 0;
+    start = 0;
+    end = 0;
   }
 
   public MyDeque(int initialCapacity){
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[initialCapacity];
     data = d;
+    size = 0;
+    start = 0;
+    end = 0;
   }
 
   public int size(){
     return size;
   }
 
-  public void resize(){
+  private void resize(){
     @SuppressWarnings("unchecked")
     E[] newData = (E[])new Object[size*2];
     int idx = 0;
@@ -36,11 +42,22 @@ public class MyDeque<E>{
 
   public String toString(){
     String output = "{";
-    for (int i = start; i != end; i++){
-      if (i == data.length){
-        i = 0;
+    System.out.println("start: "+start+" end: "+end);
+    if (end > start || size == 1){
+      for (int i = start; i <= end; i++){
+        System.out.println("data[i]1 "+ data[i]);
+        output += data[i];
       }
-      output += data[i]+" ";
+    }
+    if (end < start){
+      for (int i = start; i < data.length; i++){
+        System.out.println("data[i]2 "+ data[i]);
+        output += data[i];
+      }
+      for (int i = 0; i <= end; i++){
+        System.out.println("data[i]3 "+ data[i]);
+        output += data[i];
+      }
     }
     output += "}";
     return output;
@@ -55,6 +72,8 @@ public class MyDeque<E>{
     }
     if (start == 0){
       start = data.length-1;
+    } else {
+      start--;
     }
     data[start] = element;
     size++;
@@ -64,13 +83,20 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException("Element is Null");
     }
-    if (size == data.length){
-      resize();
+    if (size == 0){
+      data[end] = element;
+      //System.out.println(data[end]);
+    } else {
+      if (size == data.length){
+        resize();
+      }
+      if (end == data.length-1){
+        end = 0;
+      } else {
+        end++;
+      }
+      data[end] = element;
     }
-    if (end == data.length-1){
-      end = 0;
-    }
-    data[end] = element;
     size++;
   }
 
@@ -98,7 +124,7 @@ public class MyDeque<E>{
     if (end == 0){
       end = data.length-1;
     }else{
-      start--;
+      end++;
     }
     size--;
     return output;
@@ -116,6 +142,15 @@ public class MyDeque<E>{
       throw new NoSuchElementException("Deque is Empty");
     }
     return data[end];
+  }
+
+  public static void main(String[] args){
+    MyDeque<String> d = new MyDeque<String>();
+    System.out.println(d.toString());
+    d.addLast("hello");
+    d.addLast("hello");
+    d.addLast("hello");
+    System.out.println(d.toString());
   }
 
 }
