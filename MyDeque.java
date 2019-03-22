@@ -20,6 +20,20 @@ public class MyDeque<E>{
     return size;
   }
 
+  public void resize(){
+    @SuppressWarnings("unchecked")
+    E[] newData = (E[])new Object[size*2];
+    int idx = 0;
+    for (int i = start; i != end; i++){
+      if (i == data.length){
+        i = 0;
+      }
+      newData[idx] = data[i];
+      idx++;
+    }
+
+  }
+
   public String toString(){
     String output = "{";
     for (int i = start; i != end; i++){
@@ -36,6 +50,9 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException("Element is Null");
     }
+    if (size == data.length){
+      resize();
+    }
     if (start == 0){
       start = data.length-1;
     }
@@ -46,6 +63,9 @@ public class MyDeque<E>{
   public void addLast(E element){
     if (element == null){
       throw new NullPointerException("Element is Null");
+    }
+    if (size == data.length){
+      resize();
     }
     if (end == data.length-1){
       end = 0;
