@@ -13,22 +13,42 @@ public class Calculator{
       }catch (NumberFormatException e){
         if (tokens[i].equals("+")){
           System.out.println("+");
+          double b = d.removeLast();
+          double a = d.removeLast();
+          double change = a + b;
+          d.addLast(change);
         } else if (tokens[i].equals("-")){
           System.out.println("-");
+          double b = d.removeLast();
+          double a = d.removeLast();
+          double change = a - b;
+          d.addLast(change);
         } else if (tokens[i].equals("*")){
           System.out.println("*");
+          double b = d.removeLast();
+          double a = d.removeLast();
+          double change = a * b;
+          d.addLast(change);
         } else if (tokens[i].equals("/")){
           System.out.println("/");
+          double b = d.removeLast();
+          double a = d.removeLast();
+          double change = a / b;
+          d.addLast(change);
         } else if (tokens[i].equals("%")){
           System.out.println("%");
+          double b = d.removeLast();
+          double a = d.removeLast();
+          double change = a % b;
+          d.addLast(change);
         }
       }
     }
     System.out.println(d.toStringDebug());
-    return 0.0;
+    return d.removeLast();
   }
 
   public static void main(String[] args){
-    eval("10 2.0 +");
+    System.out.println(eval("10 2.0 +"));
   }
 }
