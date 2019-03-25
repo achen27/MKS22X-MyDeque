@@ -5,38 +5,38 @@ public class Calculator{
    */
   public static double eval(String s){
     String[] tokens = s.split(" ");
-    System.out.println(Arrays.toString(tokens));
+    //System.out.println(Arrays.toString(tokens));
     MyDeque<Double> d = new MyDeque<Double>();
     for (int i = 0; i < tokens.length; i++){
       try{
         d.addLast(Double.parseDouble(tokens[i]));
       }catch (NumberFormatException e){
         if (tokens[i].equals("+")){
-          System.out.println("+");
+          //System.out.println("+");
           double b = d.removeLast();
           double a = d.removeLast();
           double change = a + b;
           d.addLast(change);
         } else if (tokens[i].equals("-")){
-          System.out.println("-");
+          //System.out.println("-");
           double b = d.removeLast();
           double a = d.removeLast();
           double change = a - b;
           d.addLast(change);
         } else if (tokens[i].equals("*")){
-          System.out.println("*");
+          //System.out.println("*");
           double b = d.removeLast();
           double a = d.removeLast();
           double change = a * b;
           d.addLast(change);
         } else if (tokens[i].equals("/")){
-          System.out.println("/");
+          //System.out.println("/");
           double b = d.removeLast();
           double a = d.removeLast();
           double change = a / b;
           d.addLast(change);
         } else if (tokens[i].equals("%")){
-          System.out.println("%");
+          //System.out.println("%");
           double b = d.removeLast();
           double a = d.removeLast();
           double change = a % b;
@@ -44,11 +44,14 @@ public class Calculator{
         }
       }
     }
-    System.out.println(d.toStringDebug());
+    //System.out.println(d.toStringDebug());
     return d.removeLast();
   }
 
   public static void main(String[] args){
     System.out.println(eval("10 2.0 +"));
+    System.out.println(eval("11 3 - 4 + 2.5 *"));
+    System.out.println(eval("8 2 + 99 9 - * 2 + 9 -"));
+    System.out.println(eval("1 2 3 4 5 + * - -"));
   }
 }
