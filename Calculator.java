@@ -11,7 +11,17 @@ public class Calculator{
       try{
         d.addLast(Double.parseDouble(tokens[i]));
       }catch (NumberFormatException e){
-
+        if (tokens[i].equals("+")){
+          System.out.println("+");
+        } else if (tokens[i].equals("-")){
+          System.out.println("-");
+        } else if (tokens[i].equals("*")){
+          System.out.println("*");
+        } else if (tokens[i].equals("/")){
+          System.out.println("/");
+        } else if (tokens[i].equals("%")){
+          System.out.println("%");
+        }
       }
     }
     System.out.println(d.toStringDebug());
