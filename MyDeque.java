@@ -129,7 +129,7 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException("Element is Null");
     }
-    System.out.println("Size:"+size);
+    //System.out.println("Size:"+size);
     if (size == 0){
       data[end] = element;
       start = end;
@@ -142,7 +142,7 @@ public class MyDeque<E>{
         //System.out.println("!!");
         end = 0;
       } else {
-        System.out.println("end++");
+        //System.out.println("end++");
         end++;
       }
       data[end] = element;
