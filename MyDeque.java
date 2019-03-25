@@ -137,7 +137,7 @@ public class MyDeque<E>{
     if (end == 0){
       end = data.length-1;
     }else{
-      end++;
+      end--;
     }
     size--;
     return output;
@@ -164,13 +164,10 @@ public class MyDeque<E>{
     d.addLast("hello");
     d.addLast("hello");
     System.out.println(d.toString());
-    System.out.println(d.toStringDebug());
+    //System.out.println(d.toStringDebug());
     d.addFirst("hello");
     System.out.println(d.toString());
-    d.removeFirst();
-    d.removeFirst();
-    d.removeFirst();
-    d.removeFirst();
+    d.removeLast();
 
     System.out.println(d.toString());
     //d.addFirst("hello");
