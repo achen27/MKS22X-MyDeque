@@ -43,20 +43,22 @@ public class MyDeque<E>{
   public String toString(){
     String output = "{";
     System.out.println("start: "+start+" end: "+end);
-    if (end > start || size == 1){
-      for (int i = start; i <= end; i++){
-        System.out.println("data[i]1 "+ data[i]);
-        output += data[i] + " ";
+    if (size != 0){
+      if (end > start || size == 1){
+        for (int i = start; i <= end; i++){
+          System.out.println("data[i]1 "+ data[i]);
+          output += data[i] + " ";
+        }
       }
-    }
-    if (end < start){
-      for (int i = start; i < data.length; i++){
-        System.out.println("data[i]2 "+ data[i]);
-        output += data[i] + " ";
-      }
-      for (int i = 0; i <= end; i++){
-        System.out.println("data[i]3 "+ data[i]);
-        output += data[i] + " ";
+      if (end < start){
+        for (int i = start; i < data.length; i++){
+          System.out.println("data[i]2 "+ data[i]);
+          output += data[i] + " ";
+        }
+        for (int i = 0; i <= end; i++){
+          System.out.println("data[i]3 "+ data[i]);
+          output += data[i] + " ";
+        }
       }
     }
     output += "}";
@@ -168,11 +170,11 @@ public class MyDeque<E>{
     d.removeFirst();
     d.removeFirst();
     d.removeFirst();
-    //d.removeFirst();
+    d.removeFirst();
 
     System.out.println(d.toString());
     //d.addFirst("hello");
-    System.out.println(d.toStringDebug());
+    //System.out.println(d.toStringDebug());
   }
 
 }
