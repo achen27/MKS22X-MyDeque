@@ -30,14 +30,14 @@ public class MyDeque<E>{
     @SuppressWarnings("unchecked")
     E[] newData = (E[])new Object[size*2];
     int idx = 0;
-    for (int i = start; i != end; i++){
+    for (int i = start; i != end+1; i++){
       if (i == data.length){
         i = 0;
       }
       newData[idx] = data[i];
       idx++;
     }
-
+    data = newData;
   }
 
   public String toString(){
@@ -46,17 +46,17 @@ public class MyDeque<E>{
     if (size != 0){
       if (end > start || size == 1){
         for (int i = start; i <= end; i++){
-          System.out.println("data[i]1 "+ data[i]);
+          //System.out.println("data[i]1 "+ data[i]);
           output += data[i] + " ";
         }
       }
       if (end < start){
         for (int i = start; i < data.length; i++){
-          System.out.println("data[i]2 "+ data[i]);
+          //System.out.println("data[i]2 "+ data[i]);
           output += data[i] + " ";
         }
         for (int i = 0; i <= end; i++){
-          System.out.println("data[i]3 "+ data[i]);
+          //System.out.println("data[i]3 "+ data[i]);
           output += data[i] + " ";
         }
       }
@@ -118,8 +118,8 @@ public class MyDeque<E>{
     E output = data[start];
     data[start] = null;
     if (start == data.length-1){
-      System.out.println(toString());
-      System.out.println("last");
+      //System.out.println(toString());
+      //System.out.println("last");
       start = 0;
     }else{
       start++;
@@ -158,18 +158,16 @@ public class MyDeque<E>{
   }
 
   public static void main(String[] args){
-    MyDeque<String> d = new MyDeque<String>();
+    MyDeque<Integer> d = new MyDeque<Integer>();
     System.out.println(d.toString());
-    d.addLast("hello");
-    d.addLast("hello");
-    d.addLast("hello");
-    System.out.println(d.toString());
+    for(int i =0; i < 11; i++){
+      d.addLast(i);
+      System.out.println(d.toString());
+    }
+    //System.out.println(d.toString());
     //System.out.println(d.toStringDebug());
-    d.addFirst("hello");
-    System.out.println(d.toString());
-    d.removeLast();
 
-    System.out.println(d.toString());
+    //System.out.println(d.toString());
     //d.addFirst("hello");
     //System.out.println(d.toStringDebug());
   }
