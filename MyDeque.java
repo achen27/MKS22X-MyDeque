@@ -4,7 +4,7 @@ public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
 
-  public MyDeque(){
+  public MyDeque(){ //constructor
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[10];
     data = d;
@@ -13,7 +13,7 @@ public class MyDeque<E>{
     end = 0;
   }
 
-  public MyDeque(int initialCapacity){
+  public MyDeque(int initialCapacity){ //constructor with starting capacity
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[initialCapacity];
     data = d;
@@ -22,11 +22,11 @@ public class MyDeque<E>{
     end = 0;
   }
 
-  public int size(){
+  public int size(){ //returns size of deque
     return size;
   }
 
-  private void resize(){
+  private void resize(){ //doubles capcity of array
     @SuppressWarnings("unchecked")
     E[] newData = (E[])new Object[size*2];
     int idx = 0;
@@ -45,13 +45,13 @@ public class MyDeque<E>{
       idx++;
     }
     //newData[idx] = data[end];*/
-    if (end > start){
+    if (end > start){ //one loop if end is after start
       for (int i = start; i <= end; i++){
         //System.out.println("data[i]1 "+ data[i]);
         newData[idx] = data[i];
         idx++;
       }
-    }else if (end < start){
+    } else if (end < start){ //two loops is end is before start
       for (int i = start; i < data.length; i++){
         //System.out.println("data[i]2 "+ data[i]);
         newData[idx] = data[i];
@@ -63,7 +63,7 @@ public class MyDeque<E>{
         idx++;
       }
     }
-    start = 0;
+    start = 0; //change instance variables
     end = size - 1;
     data = newData;
   }
@@ -71,14 +71,14 @@ public class MyDeque<E>{
   public String toString(){
     String output = "{";
     //System.out.println("start: "+start+" end: "+end);
-    if (size != 0){
+    if (size != 0){ //one loop if end is after start
       if (end > start || size == 1){
         for (int i = start; i <= end; i++){
           //System.out.println("data[i]1 "+ data[i]);
           output += data[i] + " ";
         }
       }
-      if (end < start){
+      if (end < start){ //two loops is end is before start
         for (int i = start; i < data.length; i++){
           //System.out.println("data[i]2 "+ data[i]);
           output += data[i] + " ";
@@ -94,7 +94,7 @@ public class MyDeque<E>{
     return output;
   }
 
-  public String toStringDebug(){
+  private String toStringDebug(){ //prints entire array with nulls
     String output = "{";
     for (int i = 0; i < data.length; i++){
       output += data[i] + " ";
@@ -103,7 +103,7 @@ public class MyDeque<E>{
     return output;
   }
 
-  public void addFirst(E element){
+  public void addFirst(E element){ //adds element to front
     if (element == null){
       throw new NullPointerException("Element is Null");
     }
@@ -125,7 +125,7 @@ public class MyDeque<E>{
     size++;
   }
 
-  public void addLast(E element){
+  public void addLast(E element){ //adds element to end
     if (element == null){
       throw new NullPointerException("Element is Null");
     }
@@ -150,7 +150,7 @@ public class MyDeque<E>{
     size++;
   }
 
-  public E removeFirst(){
+  public E removeFirst(){ //removes element from front
     if (size == 0){
       throw new NoSuchElementException("Deque is Empty");
     }
@@ -167,7 +167,7 @@ public class MyDeque<E>{
     return output;
   }
 
-  public E removeLast(){
+  public E removeLast(){ //removes element from end
     if (size == 0){
       throw new NoSuchElementException("Deque is Empty");
     }
@@ -182,14 +182,14 @@ public class MyDeque<E>{
     return output;
   }
 
-  public E getFirst(){
+  public E getFirst(){ //returns first element without removing
     if (size == 0){
       throw new NoSuchElementException("Deque is Empty");
     }
     return data[start];
   }
 
-  public E getLast(){
+  public E getLast(){ //returns last element without removing
     if (size == 0){
       throw new NoSuchElementException("Deque is Empty");
     }
