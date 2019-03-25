@@ -46,18 +46,27 @@ public class MyDeque<E>{
     if (end > start || size == 1){
       for (int i = start; i <= end; i++){
         System.out.println("data[i]1 "+ data[i]);
-        output += data[i];
+        output += data[i] + " ";
       }
     }
     if (end < start){
       for (int i = start; i < data.length; i++){
         System.out.println("data[i]2 "+ data[i]);
-        output += data[i];
+        output += data[i] + " ";
       }
       for (int i = 0; i <= end; i++){
         System.out.println("data[i]3 "+ data[i]);
-        output += data[i];
+        output += data[i] + " ";
       }
+    }
+    output += "}";
+    return output;
+  }
+
+  public String toStringDebug(){
+    String output = "{";
+    for (int i = 0; i < data.length; i++){
+      output += data[i] + " ";
     }
     output += "}";
     return output;
@@ -107,9 +116,11 @@ public class MyDeque<E>{
     E output = data[start];
     data[start] = null;
     if (start == data.length-1){
+      System.out.println(toString());
+      System.out.println("last");
       start = 0;
     }else{
-      start--;
+      start++;
     }
     size--;
     return output;
@@ -151,6 +162,17 @@ public class MyDeque<E>{
     d.addLast("hello");
     d.addLast("hello");
     System.out.println(d.toString());
+    System.out.println(d.toStringDebug());
+    d.addFirst("hello");
+    System.out.println(d.toString());
+    d.removeFirst();
+    d.removeFirst();
+    d.removeFirst();
+    //d.removeFirst();
+
+    System.out.println(d.toString());
+    //d.addFirst("hello");
+    System.out.println(d.toStringDebug());
   }
 
 }
