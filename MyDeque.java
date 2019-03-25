@@ -109,6 +109,7 @@ public class MyDeque<E>{
     }
     if (size == 0){
       data[start] = element;
+      end  = start;
       //System.out.println(data[end]);
     } else {
       if (size == data.length){
@@ -128,16 +129,20 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException("Element is Null");
     }
+    System.out.println("Size:"+size);
     if (size == 0){
       data[end] = element;
+      start = end;
       //System.out.println(data[end]);
     } else {
       if (size == data.length){
         resize();
       }
       if (end == data.length-1){
+        //System.out.println("!!");
         end = 0;
       } else {
+        System.out.println("end++");
         end++;
       }
       data[end] = element;
@@ -194,15 +199,59 @@ public class MyDeque<E>{
   public static void main(String[] args){
     MyDeque<Integer> d = new MyDeque<Integer>();
     //System.out.println(d.toString());
-    for(int i =0; i < 21; i++){
+    /*for(int i =0; i < 21; i++){
       d.addFirst(i);
       System.out.println("S: "+d.start);
       System.out.println("E: "+d.end);
       System.out.println("Debug: " +d.toStringDebug());
       System.out.println(d.toString());
-    }
+    }*/
+    d.addLast(1);
+    d.addLast(1);
+    d.addLast(1);
+    d.addLast(1);
+    d.addLast(1);
+    d.addLast(1);
+    d.addLast(1);
+    d.addLast(1);
+    d.addLast(1);
+    System.out.println("Size: "+d.size);
+    System.out.println(d.toStringDebug());
+    d.removeFirst();
+    System.out.println("Size: "+d.size);
+    System.out.println(d.toStringDebug());
+    d.removeFirst();
+    System.out.println("Size: "+d.size);
+    System.out.println(d.toStringDebug());
+    d.removeFirst();
+    System.out.println("Size: "+d.size);
+    System.out.println(d.toStringDebug());
+    d.removeFirst();
+    System.out.println("Size: "+d.size);
+    System.out.println(d.toStringDebug());
+    d.removeFirst();
+    System.out.println("Size: "+d.size);
+    System.out.println(d.toStringDebug());
+    d.removeFirst();
+    System.out.println("Size: "+d.size);
+    System.out.println(d.toStringDebug());
+    d.removeFirst();
+    System.out.println("Size: "+d.size);
+    System.out.println(d.toStringDebug());
+    d.removeFirst();
+    System.out.println("Size: "+d.size);
+    System.out.println(d.toStringDebug());
+    d.removeFirst();
+    System.out.println("Size: "+d.size);
+    System.out.println(d.toStringDebug());
+    System.out.println("S: "+d.start);
+    System.out.println("E: "+d.end);
+    System.out.println("addLast");
+    d.addLast(1);
+    System.out.println("S: "+d.start);
+    System.out.println("E: "+d.end);
     //d.addFirst(0);
-    //System.out.println(d.toString());
+    System.out.println(d.toString());
     System.out.println(d.toStringDebug());
 
     //System.out.println(d.toString());
