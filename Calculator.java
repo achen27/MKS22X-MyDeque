@@ -4,38 +4,38 @@ public class Calculator{
    *Assume valid postfix notation, separated by spaces.
    */
   public static double eval(String s){
-    String[] tokens = s.split(" ");
+    String[] tokens = s.split(" "); //split string into list of doubles and operators
     //System.out.println(Arrays.toString(tokens));
-    MyDeque<Double> d = new MyDeque<Double>();
+    MyDeque<Double> d = new MyDeque<Double>(); //create stack
     for (int i = 0; i < tokens.length; i++){
       try{
-        d.addLast(Double.parseDouble(tokens[i]));
-      }catch (NumberFormatException e){
-        if (tokens[i].equals("+")){
+        d.addLast(Double.parseDouble(tokens[i])); //adding all non operators
+      }catch (NumberFormatException e){ //cannot be converted into double
+        if (tokens[i].equals("+")){ //adding
           //System.out.println("+");
           double b = d.removeLast();
           double a = d.removeLast();
           double change = a + b;
           d.addLast(change);
-        } else if (tokens[i].equals("-")){
+        } else if (tokens[i].equals("-")){ //subtracting
           //System.out.println("-");
           double b = d.removeLast();
           double a = d.removeLast();
           double change = a - b;
           d.addLast(change);
-        } else if (tokens[i].equals("*")){
+        } else if (tokens[i].equals("*")){ //multiplying
           //System.out.println("*");
           double b = d.removeLast();
           double a = d.removeLast();
           double change = a * b;
           d.addLast(change);
-        } else if (tokens[i].equals("/")){
+        } else if (tokens[i].equals("/")){ //dividing
           //System.out.println("/");
           double b = d.removeLast();
           double a = d.removeLast();
           double change = a / b;
           d.addLast(change);
-        } else if (tokens[i].equals("%")){
+        } else if (tokens[i].equals("%")){ //remainder
           //System.out.println("%");
           double b = d.removeLast();
           double a = d.removeLast();
@@ -45,7 +45,7 @@ public class Calculator{
       }
     }
     //System.out.println(d.toStringDebug());
-    return d.removeLast();
+    return d.removeLast(); //returns last element in stack
   }
 
   public static void main(String[] args){
